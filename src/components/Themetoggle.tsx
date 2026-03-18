@@ -11,12 +11,7 @@ function ThemeToggle({ isDark, toggle }: ThemeToggleProps) {
       aria-label="Toggle dark mode"
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <span className="theme-toggle-track">
-        <span className="theme-toggle-thumb" />
-      </span>
-      <span className="theme-toggle-icon">
-        {isDark ? "🌙" : "☀️"}
-      </span>
+      {isDark ? "☀️" : "🌙"}
     </button>
   );
 }

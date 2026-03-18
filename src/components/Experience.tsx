@@ -19,24 +19,20 @@ function Experience() {
     <section id="experience" className="experience-section">
       <div className="container">
 
-        <div className="exp-header">
+        <div className="section-header">
           <h2>Experience</h2>
-          <span className="exp-header-line" />
+          <span className="divider-line" />
         </div>
 
         <div className="exp-timeline">
           {experiences.map((exp, i) => (
             <div className="exp-item" key={i}>
-
-              {/* Left: timeline spine */}
               <div className="exp-spine">
                 <div className="exp-dot" />
                 <div className="exp-line" />
               </div>
 
-              {/* Right: card */}
               <div className="exp-card">
-
                 <div className="exp-card-top">
                   <div>
                     <h4 className="exp-role">{exp.role}</h4>
@@ -66,7 +62,6 @@ function Experience() {
                     </li>
                   ))}
                 </ul>
-
               </div>
             </div>
           ))}

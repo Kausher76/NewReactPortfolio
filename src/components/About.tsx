@@ -1,4 +1,4 @@
-import { FaGithub, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin} from "react-icons/fa";
 import profile from "../assets/IMG_20251223_170929465~2.jpg";
 
 function About() {

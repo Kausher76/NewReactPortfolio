@@ -18,7 +18,7 @@ const educations = [
     location: "Patna, Bihar, India",
     period: "2017 – 2020",
     cgpa: "66.67%",
-    grade: "Percentage",
+    grade: "",
     icon: "📐",
     highlights: [
       "Built strong foundation in Mathematics including Algebra, Calculus, and Statistics.",
@@ -31,7 +31,7 @@ const educations = [
     location: "Patna, Bihar, India",
     period: "2015 – 2017",
     cgpa: "55.20%",
-    grade: "Percentage",
+    grade: "",
     icon: "🔬",
     highlights: [
       "Studied core subjects including Physics, Chemistry, and Mathematics.",

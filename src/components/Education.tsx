@@ -4,11 +4,51 @@ const educations = [
     institution: "Sardar Patel Institute of Technology",
     location: "Mumbai, India",
     period: "2022 – 2024",
-    cgpa: "7.0",
+    cgpa: "7.0 / 10",
     grade: "CGPA",
+    icon: "🎓",
     highlights: [
       "Specialized in Full Stack Web Development and Database Management.",
       "Worked on projects involving React, .NET Core, and SQL Server.",
+    ],
+  },
+  {
+    degree: "Bachelor of Science in Mathematics (BSc Mathematics)",
+    institution: "Anugrah Narayan College, Magadh University",
+    location: "Patna, Bihar, India",
+    period: "2017 – 2020",
+    cgpa: "66.67%",
+    grade: "Percentage",
+    icon: "📐",
+    highlights: [
+      "Built strong foundation in Mathematics including Algebra, Calculus, and Statistics.",
+      "Developed analytical and problem-solving skills.",
+    ],
+  },
+  {
+    degree: "Intermediate of Science (I.Sc.)",
+    institution: "Bihar State Education Board, Patna",
+    location: "Patna, Bihar, India",
+    period: "2015 – 2017",
+    cgpa: "55.20%",
+    grade: "Percentage",
+    icon: "🔬",
+    highlights: [
+      "Studied core subjects including Physics, Chemistry, and Mathematics.",
+      "Developed foundational analytical and problem-solving skills.",
+    ],
+  },
+  {
+    degree: "Matriculation (10th Grade)",
+    institution: "Kendriya Vidyalaya Khagaul, Patna",
+    location: "Patna, Bihar, India",
+    period: "2015",
+    cgpa: "8.2 / 10",
+    grade: "CGPA",
+    icon: "📚",
+    highlights: [
+      "Completed core subjects including Mathematics, Science, and English.",
+      "Built a strong academic foundation and discipline.",
     ],
   },
 ];
@@ -28,7 +68,7 @@ function Education() {
             <div className="edu-item" key={i}>
               <div className="edu-spine">
                 <div className="edu-dot">
-                  <span>🎓</span>
+                  <span>{edu.icon}</span>
                 </div>
                 <div className="edu-line" />
               </div>

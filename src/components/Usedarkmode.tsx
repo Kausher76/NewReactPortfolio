@@ -18,7 +18,7 @@ export function useDarkMode() {
     }
   }, [isDark]);
 
-  const toggle = () => setIsDark((prev) => !prev);
+  const toggle = () => setIsDark((prev: any) => !prev);
 
   return { isDark, toggle };
 }

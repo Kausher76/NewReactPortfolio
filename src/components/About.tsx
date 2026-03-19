@@ -1,5 +1,5 @@
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import profile from "../assets/IMG_20251223_170929465~2.jpg";
+import profile from "../assets/IMG_20260117_141710330.jpg";
 
 function About() {
   return (

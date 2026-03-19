@@ -6,19 +6,22 @@ type Status = "idle" | "sending" | "success" | "error";
 function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
-  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
 
   const validate = (name: string, email: string, message: string) => {
     const errs: typeof errors = {};
-    if (!name.trim()) errs.name = "Name is required.";
-    if (!email.trim()) errs.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Enter a valid email.";
-    if (!message.trim()) errs.message = "Message is required.";
+    if (!name.trim()) errs.name = "Required";
+    if (!email.trim()) errs.email = "Required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Invalid email";
+    if (!message.trim()) errs.message = "Required";
     return errs;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    debugger;
     e.preventDefault();
     const form = formRef.current!;
     const name    = (form.elements.namedItem("from_name")  as HTMLInputElement).value;
@@ -46,96 +49,146 @@ function Contact() {
   };
 
   return (
-    <section id="contact">
-      <div className="container">
+    <>
+      <style>{`
+        .cf {
+          max-width: 420px;
+          margin: 0 auto;
+          padding: 2.5rem 1.5rem;
+          font-family: inherit;
+        }
+        .cf-title {
+          font-size: 13px;
+          color: #999;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 2rem;
+        }
+        .cf-links {
+          display: flex;
+          gap: 1.5rem;
+          margin-bottom: 2.5rem;
+        }
+        .cf-links a {
+          font-size: 13px;
+          color: #666;
+          text-decoration: none;
+        }
+        .cf-links a:hover { color: #111; }
+        .cf-row { margin-bottom: 1.5rem; }
+        .cf-row label {
+          display: block;
+          font-size: 11px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #aaa;
+          margin-bottom: 6px;
+        }
+        .cf-row input,
+        .cf-row textarea {
+          width: 100%;
+          box-sizing: border-box;
+          background: transparent;
+          border: none;
+          border-bottom: 0.5px solid #ddd;
+          padding: 6px 0;
+          font-size: 14px;
+          font-family: inherit;
+          color: #111;
+          outline: none;
+          resize: none;
+          transition: border-color 0.15s;
+        }
+        .cf-row input:focus,
+        .cf-row textarea:focus { border-bottom-color: #111; }
+        .cf-row input.err,
+        .cf-row textarea.err { border-bottom-color: #c0392b; }
+        .cf-err {
+          font-size: 11px;
+          color: #c0392b;
+          margin-top: 4px;
+        }
+        .cf-status { font-size: 12px; margin-bottom: 1rem; }
+        .cf-status.ok   { color: #2d7a4f; }
+        .cf-status.fail { color: #c0392b; }
+        .cf-submit {
+          background: #111;
+          color: #fff;
+          border: none;
+          padding: 9px 24px;
+          font-size: 12px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-family: inherit;
+          border-radius: 2px;
+          transition: opacity 0.15s;
+        }
+        .cf-submit:hover:not(:disabled) { opacity: 0.75; }
+        .cf-submit:disabled { opacity: 0.35; cursor: default; }
+      `}</style>
 
-        <div className="section-header">
-          <h2>Contact</h2>
-          <span className="divider-line" />
-        </div>
+      <section id="contact">
+        <div className="cf">
 
-        {/* Info chips */}
-        <div className="contact-info">
-          <div className="contact-info-item">
-            <span>✉️</span>
-            <span>kausher01imam@gmail.com</span>
-          </div>
-          <div className="contact-info-item">
-            <span>💼</span>
-            <a
-              href="https://www.linkedin.com/in/kausher-i-441b78119/"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              linkedin.com/in/kausher-i
+          <p className="cf-title">Get in touch</p>
+
+          <div className="cf-links">
+            <a href="mailto:kausher01imam@gmail.com">kausher01imam@gmail.com</a>
+            <a href="https://www.linkedin.com/in/kausher-i-441b78119/" target="_blank" rel="noreferrer">
+              LinkedIn
             </a>
           </div>
-        </div>
 
-        {/* Form */}
-        <div className="col-md-6 mx-auto">
           <form ref={formRef} onSubmit={handleSubmit} noValidate>
 
-            <div className="contact-field">
+            <div className="cf-row">
+              <label>Name</label>
               <input
-                className={`form-control ${errors.name ? "is-invalid" : ""}`}
                 name="from_name"
-                placeholder="Your Name"
+                className={errors.name ? "err" : ""}
                 disabled={status === "sending"}
               />
-              {errors.name && <div className="contact-error">{errors.name}</div>}
+              {errors.name && <p className="cf-err">{errors.name}</p>}
             </div>
 
-            <div className="contact-field">
+            <div className="cf-row">
+              <label>Email</label>
               <input
-                className={`form-control ${errors.email ? "is-invalid" : ""}`}
                 name="from_email"
                 type="email"
-                placeholder="Your Email"
+                className={errors.email ? "err" : ""}
                 disabled={status === "sending"}
               />
-              {errors.email && <div className="contact-error">{errors.email}</div>}
+              {errors.email && <p className="cf-err">{errors.email}</p>}
             </div>
 
-            <div className="contact-field">
+            <div className="cf-row">
+              <label>Message</label>
               <textarea
-                className={`form-control ${errors.message ? "is-invalid" : ""}`}
                 name="message"
                 rows={4}
-                placeholder="Message"
+                className={errors.message ? "err" : ""}
                 disabled={status === "sending"}
               />
-              {errors.message && <div className="contact-error">{errors.message}</div>}
+              {errors.message && <p className="cf-err">{errors.message}</p>}
             </div>
 
             {status === "success" && (
-              <div className="contact-status contact-status--success">
-                ✓ Message sent! I'll get back to you soon.
-              </div>
+              <p className="cf-status ok">Message sent — I'll be in touch soon.</p>
             )}
             {status === "error" && (
-              <div className="contact-status contact-status--error">
-                ✕ Something went wrong. Please try again or email me directly.
-              </div>
+              <p className="cf-status fail">Something went wrong. Try again or email directly.</p>
             )}
 
-            <button
-              type="submit"
-              className="btn btn-dark w-100 mt-2"
-              disabled={status === "sending"}
-            >
-              {status === "sending"
-                ? <span className="contact-sending"><span className="contact-spinner" /> Sending...</span>
-                : "Send Message"
-              }
+            <button type="submit" className="cf-submit" disabled={status === "sending"}>
+              {status === "sending" ? "Sending…" : "Send"}
             </button>
 
           </form>
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

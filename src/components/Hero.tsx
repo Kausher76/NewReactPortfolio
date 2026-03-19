@@ -1,5 +1,6 @@
 
-import profile from "../assets/IMG_20260227_204248089.jpg";
+
+import profile from "../assets/IMG_20251223_170929465~2.jpg";
 import resumePdf from "../assets/Kausher_Imam_Alam9-1718613457807.pdf";
 
 function Hero() {

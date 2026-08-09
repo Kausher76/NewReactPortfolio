@@ -1,33 +1,40 @@
-const skills = [
-  { name: "React",       icon: "⚛️" },
-  { name: ".NET Core",   icon: "💠" },
-  { name: "SQL Server",  icon: "🗄️" },
-  { name: "JavaScript",  icon: "🟨" },
-  { name: "C#",          icon: "🔷" },
-  { name: "REST API",    icon: "</>" },
+const skillGroups = [
+  {
+    label: "frontend",
+    items: ["React", "JavaScript", "TypeScript", "HTML / CSS"],
+  },
+  {
+    label: "backend",
+    items: [".NET Core", "C#", "REST APIs", "Node.js"],
+  },
+  {
+    label: "data & tooling",
+    items: ["SQL Server", "PostgreSQL", "Git / GitHub", "Azure"],
+  },
 ];
 
 function Skills() {
   return (
-    <section id="skills" className="py-5">
+    <section id="skills">
       <div className="container">
-
-        <div className="section-header">
-          <h2>Skills</h2>
-          <span className="divider-line" />
+        <div className="eyebrow">
+          <span className="method get">GET</span>
+          <span className="path">/skills</span>
         </div>
+        <h2 className="section-title">Skills</h2>
 
-        <div className="row">
-          {skills.map((s, i) => (
-            <div className="col-md-4 col-6 mb-3" key={i}>
-              <div className="skill-card">
-                <span className="skill-icon">{s.icon}</span>
-                <span>{s.name}</span>
-              </div>
+        <div className="skills-grid">
+          {skillGroups.map((group) => (
+            <div className="skill-col" key={group.label}>
+              <div className="skill-col-label">{group.label}</div>
+              <ul className="skill-list">
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
-    title: "WOW – Way of Working (CRM)",
+    title: "WOW — Way of Working (CRM)",
     desc: "CRM system managing projects, requirements, and task assignments with calendar and timesheet features for tracking daily tasks, employee schedules, and work hours.",
     image: "https://wow.azurewebsites.net/static/media/wow-logo.ddc6f20dcba5fe03b6e1.png",
     tech: ["React", ".NET", "SQL Server"],
@@ -10,7 +10,7 @@ const projects = [
     github: "#",
   },
   {
-    title: "CR3 – Training Score Management",
+    title: "CR3 — Training Score Management",
     desc: "Training management system for construction workers with site-based registration, PDF assessments, approval workflow, and bulk upload APIs for candidate registration.",
     image: "https://cr3.group/wp-content/uploads/2022/04/logo.png",
     tech: ["React", ".NET", "SQL Server"],
@@ -26,7 +26,7 @@ const projects = [
     github: "#",
   },
   {
-    title: "Afcons – Medical Records Management",
+    title: "Afcons — Medical Records Management",
     desc: "Manages medical camps across multiple sites, tracks medicine stock, handles prescriptions, and supports Doctor, First Aider, and Admin roles for site medical operations.",
     image: "https://afcons.com/wp-content/uploads/2026/01/Afcons-Logo-Rounded.png",
     tech: ["React", ".NET", "SQL Server"],
@@ -37,69 +37,50 @@ const projects = [
 
 function Projects() {
   return (
-    <section id="projects" className="py-5">
+    <section id="projects">
       <div className="container">
-
-        <div className="section-header">
-          <h2>Projects</h2>
-          <span className="divider-line" />
+        <div className="eyebrow">
+          <span className="method get">GET</span>
+          <span className="path">/projects</span>
         </div>
+        <h2 className="section-title">Projects</h2>
 
-        <div className="row">
+        <div className="projects-grid">
           {projects.map((p, i) => (
-            <div className="col-md-6 mb-4" key={i}>
-              <div className="project-card h-100">
-
-                <div
-                  className="d-flex align-items-center justify-content-center"
-                  style={{ background: "var(--bg-secondary)", height: "140px", borderBottom: "1px solid var(--border-color)" }}
-                >
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    style={{ maxHeight: "60px", objectFit: "contain", opacity: 0.9 }}
-                  />
-                </div>
-
-                <div className="p-3">
-                  <h5 className="fw-bold mb-2">{p.title}</h5>
-                  <p className="text-muted mb-3">{p.desc}</p>
-
-                  <div className="d-flex flex-wrap gap-1 mb-3">
-                    {p.tech.map((t, j) => (
-                      <span
-                        key={j}
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.68rem",
-                          color: "var(--text-muted)",
-                          background: "var(--badge-bg)",
-                          border: "1px solid var(--badge-border)",
-                          borderRadius: "4px",
-                          padding: "2px 7px",
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="d-flex align-items-center gap-3">
-                    {p.live !== "#" && (
-                      <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm px-3">
-                        View Project
-                      </a>
-                    )}
-                    <a href={p.live} className="text-secondary"><FaExternalLinkAlt size={13} /></a>
-                    <a href={p.github} className="text-secondary"><FaGithub size={14} /></a>
-                  </div>
-                </div>
-
+            <article className="project-card" key={i}>
+              <div className="project-media">
+                <img src={p.image} alt={p.title} />
               </div>
-            </div>
+
+              <div className="project-body">
+                <h3 className="project-title">{p.title}</h3>
+                <p className="project-desc">{p.desc}</p>
+
+                <div className="project-tech-row">
+                  {p.tech.map((t, j) => (
+                    <span className="project-tech-tag" key={j}>{t}</span>
+                  ))}
+                </div>
+
+                <div className="project-links">
+                  {p.live !== "#" && (
+                    <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-outline" style={{ padding: "7px 14px" }}>
+                      live ↗
+                    </a>
+                  )}
+                  <a href={p.github} className="project-icon-link" aria-label="Source code">
+                    <FaGithub size={14} />
+                  </a>
+                  {p.live !== "#" && (
+                    <a href={p.live} target="_blank" rel="noreferrer" className="project-icon-link" aria-label="Open live project">
+                      <FaExternalLinkAlt size={12} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
-
       </div>
     </section>
   );

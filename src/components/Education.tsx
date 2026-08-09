@@ -3,39 +3,32 @@ const educations = [
     degree: "Master of Computer Applications (MCA)",
     institution: "Sardar Patel Institute of Technology",
     location: "Mumbai, India",
-    period: "2022 – 2024",
-    cgpa: "7.0 / 10",
-    grade: "CGPA",
-    icon: "🎓",
+    period: "2022 — 2024",
+    score: "7.0 CGPA",
     highlights: [
       "Specialized in Full Stack Web Development and Database Management.",
       "Worked on projects involving React, .NET Core, and SQL Server.",
     ],
   },
   {
-    degree: "Bachelor of Science in Mathematics (BSc Mathematics)",
+    degree: "BSc Mathematics",
     institution: "Anugrah Narayan College, Magadh University",
     location: "Patna, Bihar, India",
-    period: "2017 – 2020",
-    cgpa: "66.67%",
-    grade: "",
-    icon: "📐",
+    period: "2017 — 2020",
+    score: "66.67%",
     highlights: [
-      "Built strong foundation in Mathematics including Algebra, Calculus, and Statistics.",
+      "Built strong foundation in Algebra, Calculus, and Statistics.",
       "Developed analytical and problem-solving skills.",
     ],
   },
   {
-    degree: "Intermediate of Science (I.Sc.)",
+    degree: "Intermediate of Science",
     institution: "Bihar State Education Board, Patna",
     location: "Patna, Bihar, India",
-    period: "2015 – 2017",
-    cgpa: "55.20%",
-    grade: "",
-    icon: "🔬",
+    period: "2015 — 2017",
+    score: "55.20%",
     highlights: [
       "Studied core subjects including Physics, Chemistry, and Mathematics.",
-      "Developed foundational analytical and problem-solving skills.",
     ],
   },
   {
@@ -43,68 +36,51 @@ const educations = [
     institution: "Kendriya Vidyalaya Khagaul, Patna",
     location: "Patna, Bihar, India",
     period: "2015",
-    cgpa: "8.2 / 10",
-    grade: "CGPA",
-    icon: "📚",
+    score: "8.2 CGPA",
     highlights: [
       "Completed core subjects including Mathematics, Science, and English.",
-      "Built a strong academic foundation and discipline.",
     ],
   },
 ];
 
 function Education() {
   return (
-    <section id="education" className="education-section">
+    <section id="education">
       <div className="container">
-
-        <div className="section-header">
-          <h2>Education</h2>
-          <span className="divider-line" />
+        <div className="eyebrow">
+          <span className="method get">GET</span>
+          <span className="path">/education</span>
         </div>
+        <h2 className="section-title">Education</h2>
 
-        <div className="edu-timeline">
+        <div className="timeline">
           {educations.map((edu, i) => (
-            <div className="edu-item" key={i}>
-              <div className="edu-spine">
-                <div className="edu-dot">
-                  <span>{edu.icon}</span>
-                </div>
-                <div className="edu-line" />
+            <div className="tl-item" key={i}>
+              <div className="tl-rail">
+                <span className="tl-period">{edu.period}</span>
+                <div className="tl-line" />
               </div>
 
-              <div className="edu-card">
-                <div className="edu-card-top">
+              <div className="tl-card">
+                <div className="tl-top">
                   <div>
-                    <h4 className="edu-degree">{edu.degree}</h4>
-                    <div className="edu-meta">
-                      <span className="edu-institution">{edu.institution}</span>
-                      <span className="edu-separator">·</span>
-                      <span className="edu-location">{edu.location}</span>
+                    <h3 className="tl-role">{edu.degree}</h3>
+                    <div className="tl-meta">
+                      <span className="org">{edu.institution}</span> · {edu.location}
                     </div>
                   </div>
-                  <div className="edu-right">
-                    <span className="edu-period">{edu.period}</span>
-                    <div className="edu-score-badge">
-                      <span className="edu-score-label">{edu.grade}</span>
-                      <span className="edu-score-value">{edu.cgpa}</span>
-                    </div>
-                  </div>
+                  <span className="tl-score">{edu.score}</span>
                 </div>
 
-                <ul className="edu-points">
+                <ul className="tl-points">
                   {edu.highlights.map((pt, j) => (
-                    <li key={j}>
-                      <span className="edu-bullet">▸</span>
-                      {pt}
-                    </li>
+                    <li key={j}>{pt}</li>
                   ))}
                 </ul>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

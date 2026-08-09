@@ -18,43 +18,39 @@ function Experience() {
   return (
     <section id="experience">
       <div className="container">
-        <div className="eyebrow">
-          <span className="method get">GET</span>
-          <span className="path">/experience</span>
-        </div>
-        <h2 className="section-title">Experience</h2>
+        <div className="eyebrow">Experience</div>
+        <h2 className="section-title">Where I've worked</h2>
 
         <div className="timeline">
           {experiences.map((exp, i) => (
-            <div className="tl-item" key={i}>
-              <div className="tl-rail">
-                <span className="tl-period">{exp.period}</span>
-                <div className="tl-line" />
-              </div>
-
-              <div className="tl-card">
-                <div className="tl-top">
-                  <div>
-                    <h3 className="tl-role">{exp.role}</h3>
-                    <div className="tl-meta">
-                      <span className="org">{exp.company}</span> · {exp.location}
-                    </div>
+            <div className="glass tl-card" key={i}>
+              <div className="tl-top">
+                <div>
+                  <h3 className="tl-role">{exp.role}</h3>
+                  <div className="tl-meta">
+                    <span className="org">{exp.company}</span> · {exp.location}
                   </div>
+                </div>
+                <div className="tl-right">
+                  <span className="tl-period">{exp.period}</span>
                   <span className="tl-badge">{exp.type}</span>
                 </div>
-
-                <div className="tl-tech-row">
-                  {exp.tech.map((t, j) => (
-                    <span className="tl-tech-tag" key={j}>{t}</span>
-                  ))}
-                </div>
-
-                <ul className="tl-points">
-                  {exp.points.map((pt, j) => (
-                    <li key={j}>{pt}</li>
-                  ))}
-                </ul>
               </div>
+
+              <div className="tl-tech-row">
+                {exp.tech.map((t, j) => (
+                  <span className="tl-tech-tag" key={j}>{t}</span>
+                ))}
+              </div>
+
+              <ul className="tl-points">
+                {exp.points.map((pt, j) => (
+                  <li key={j}>
+                    <span className="bullet" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

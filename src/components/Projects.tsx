@@ -39,15 +39,12 @@ function Projects() {
   return (
     <section id="projects">
       <div className="container">
-        <div className="eyebrow">
-          <span className="method get">GET</span>
-          <span className="path">/projects</span>
-        </div>
-        <h2 className="section-title">Projects</h2>
+        <div className="eyebrow">Projects</div>
+        <h2 className="section-title">Selected work</h2>
 
         <div className="projects-grid">
           {projects.map((p, i) => (
-            <article className="project-card" key={i}>
+            <article className="glass project-card" key={i}>
               <div className="project-media">
                 <img src={p.image} alt={p.title} />
               </div>
@@ -64,8 +61,8 @@ function Projects() {
 
                 <div className="project-links">
                   {p.live !== "#" && (
-                    <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-outline" style={{ padding: "7px 14px" }}>
-                      live ↗
+                    <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-glass" style={{ padding: "8px 16px", fontSize: "0.8rem" }}>
+                      Live site
                     </a>
                   )}
                   <a href={p.github} className="project-icon-link" aria-label="Source code">

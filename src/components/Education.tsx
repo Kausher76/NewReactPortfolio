@@ -47,37 +47,33 @@ function Education() {
   return (
     <section id="education">
       <div className="container">
-        <div className="eyebrow">
-          <span className="method get">GET</span>
-          <span className="path">/education</span>
-        </div>
-        <h2 className="section-title">Education</h2>
+        <div className="eyebrow">Education</div>
+        <h2 className="section-title">Academic background</h2>
 
         <div className="timeline">
           {educations.map((edu, i) => (
-            <div className="tl-item" key={i}>
-              <div className="tl-rail">
-                <span className="tl-period">{edu.period}</span>
-                <div className="tl-line" />
-              </div>
-
-              <div className="tl-card">
-                <div className="tl-top">
-                  <div>
-                    <h3 className="tl-role">{edu.degree}</h3>
-                    <div className="tl-meta">
-                      <span className="org">{edu.institution}</span> · {edu.location}
-                    </div>
+            <div className="glass tl-card" key={i}>
+              <div className="tl-top">
+                <div>
+                  <h3 className="tl-role">{edu.degree}</h3>
+                  <div className="tl-meta">
+                    <span className="org">{edu.institution}</span> · {edu.location}
                   </div>
-                  <span className="tl-score">{edu.score}</span>
                 </div>
-
-                <ul className="tl-points">
-                  {edu.highlights.map((pt, j) => (
-                    <li key={j}>{pt}</li>
-                  ))}
-                </ul>
+                <div className="tl-right">
+                  <span className="tl-period">{edu.period}</span>
+                  <span className="tl-badge">{edu.score}</span>
+                </div>
               </div>
+
+              <ul className="tl-points">
+                {edu.highlights.map((pt, j) => (
+                  <li key={j}>
+                    <span className="bullet" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

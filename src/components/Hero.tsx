@@ -47,7 +47,7 @@ function Hero() {
 
           <div className="hero-stats">
             <div className="hero-stat">
-              <div className="num text-gradient">1+</div>
+              <div className="num text-gradient">2+</div>
               <div className="label">Years experience</div>
             </div>
             <div className="hero-stat">

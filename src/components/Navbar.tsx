@@ -76,6 +76,26 @@ const Navbar = ({ isDark, toggle }: NavbarProps) => {
               {link.label}
             </a>
           ))}
+          <div className="nav-mobile-social">
+            <a
+              href="https://github.com/Kausher76"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-icon"
+              aria-label="GitHub"
+            >
+              <FaGithub size={16} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kausher-i-441b78119/"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-icon"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={16} />
+            </a>
+          </div>
         </div>
       </div>
     </header>
